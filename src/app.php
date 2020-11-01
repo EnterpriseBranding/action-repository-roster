@@ -1,5 +1,6 @@
 <?php
 require_once '/gh-toolkit/php.php';
+require_once '/gh-toolkit/gh-api.php';
 
 global $repo_info, $repo;
 
