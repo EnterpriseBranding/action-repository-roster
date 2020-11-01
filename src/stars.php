@@ -76,11 +76,11 @@ if ( false !== $stars ) {
 			}
 			$stars_description = str_replace( '[count]', $total_stars_count, $stars_description );
 		}
-
+		print_r( $retun );
 		$html = generate_output( $stars_output_type, $retun, $stars_description );
 	}
 
-	print_r( $stars );
+
 
 	$file = save_output( $stars_output_type, $html, $stars, 'REPOSITORY_STARS' );
 	shell_exec( 'git add -f ' . $file );
