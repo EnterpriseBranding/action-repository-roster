@@ -6,7 +6,7 @@ global $repo_info, $repo;
 
 define( 'APP_PATH', __DIR__ . '/' );
 
-define( 'WORK_DIR', gh_env( 'GITHUB_WORKSPACE' ) );
+define( 'WORK_DIR', gh_env( 'GITHUB_WORKSPACE' ) . '/' );
 
 $repos = array( gh_env( 'GITHUB_REPOSITORY' ) );
 
