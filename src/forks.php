@@ -75,7 +75,7 @@ if ( false !== $forks ) {
 				} elseif ( $fork_show_count < $total_forks_count ) {
 					$fork_description = '<i><b>' . ( $total_forks_count - $fork_show_count ) . '</b> Others have forked this repository</i>';
 				} else {
-					$fork_description = '<i><b>' . ( $total_forks_count - $fork_show_count ) . '</b> Others have forked this repository</i>';
+					$fork_description = '<i><b>' . $total_forks_count . '</b> have forked this repository</i>';
 				}
 			}
 			$fork_description = str_replace( '[count]', $total_forks_count, $fork_description );

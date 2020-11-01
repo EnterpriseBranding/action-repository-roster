@@ -67,9 +67,6 @@ if ( false !== $stars ) {
 				$status = false;
 				break;
 			}
-			print_r( $page );
-
-
 		}
 
 		if ( false !== $stars_description ) {
@@ -79,7 +76,7 @@ if ( false !== $stars ) {
 				} elseif ( $stars_show_count < $total_stars_count ) {
 					$stars_description = '<i><b>' . ( $total_stars_count - $stars_show_count ) . '</b> Others have starred this repository</i>';
 				} else {
-					$stars_description = '<i><b>' . ( $total_stars_count - $stars_show_count ) . '</b> Others have starred this repository</i>';
+					$stars_description = '<i><b>' . $total_stars_count . '</b> have starred this repository</i>';
 				}
 			}
 			$stars_description = str_replace( '[count]', $total_stars_count, $stars_description );
