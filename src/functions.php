@@ -1,9 +1,13 @@
 <?php
 require_once APP_PATH . 'output/table.php';
+require_once APP_PATH . 'output/image.php';
 
 function generate_output( $type, $data, $description ) {
 	if ( 'markdown' === $type ) {
 		return generate_markdown_table( $data, $description );
+	} else {
+		header( 'Content-Type: image/svg+xml' );
+		echo generate_image( $data, $type, $description );
 	}
 }
 
@@ -28,4 +32,16 @@ HTML;
 		file_put_contents( WORK_DIR . $save_to, $content );
 		return WORK_DIR . $save_to;
 	}
+}
+
+function convert_image_to_base64( $url ) {
+	$headers = get_headers( $url );
+	$type    = 'def';
+	for ( $j = 0; $j < count( $headers ); $j++ ) {
+		if ( strpos( $headers[ $j ], 'Content-Type' ) !== false ) {
+			$type = trim( str_replace( 'Content-Type:', '', $headers[ $j ] ) );
+			break;
+		}
+	}
+	return 'data: ' . $type . ';base64,' . base64_encode( file_get_contents( $url ) );
 }
