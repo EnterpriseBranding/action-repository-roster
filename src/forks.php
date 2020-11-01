@@ -11,6 +11,10 @@ if ( false !== $forks ) {
 	$fork_description = gh_input( 'FORK_DESCRIPTION', '' );
 	$total_forks_count = ( isset( $repo_info->forks_count ) && ! empty( $repo_info->forks_count ) ) ? $repo_info->forks_count : '';
 
+	if ( empty( $total_forks_count ) ) {
+		return;
+	}
+
 	function fetch_recent_forks( $repo, $limit = 10, $page = '1' ) {
 		global $github_api, $api_fork_per_page;
 		$data     = $github_api->decode( $github_api->get( sprintf( 'repos/%s/forks?sort=newest&per_page=' . $api_fork_per_page . '&page=' . $page, $repo ) ) );
@@ -40,6 +44,10 @@ if ( false !== $forks ) {
 		$page   = 2;
 		while ( $status ) {
 			$new = fetch_recent_forks( $repo, $fork_show_count, $page++ );
+			if ( empty( $new ) ) {
+				$status = false;
+				break;
+			}
 			foreach ( $new as $owner_info ) {
 				$base_response[] = $owner_info;
 
@@ -50,6 +58,11 @@ if ( false !== $forks ) {
 			}
 
 			if ( count( $base_response ) == $fork_show_count ) {
+				$status = false;
+				break;
+			}
+
+			if ( $page > $total_forks_count || $page === $total_forks_count ) {
 				$status = false;
 				break;
 			}

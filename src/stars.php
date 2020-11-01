@@ -10,7 +10,12 @@ if ( false !== $stars ) {
 	$stars_show_count  = gh_input( 'STARS_COUNTS', 7 );
 	$stars_description = gh_input( 'STARS_DESCRIPTION', '' );
 	$total_stars_count = ( isset( $repo_info->stargazers_count ) && ! empty( $repo_info->stargazers_count ) ) ? $repo_info->stargazers_count : '';
-	$total_stars_page  = ceil( $total_stars_count / $api_stars_per_page );
+
+	if ( empty( $total_stars_count ) ) {
+		return;
+	}
+
+	$total_stars_page = ceil( $total_stars_count / $api_stars_per_page );
 
 	function fetch_recent_stars( $repo, $limit = 10, $page = '1' ) {
 		global $github_api, $api_stars_per_page;
@@ -35,6 +40,10 @@ if ( false !== $stars ) {
 	$page   = $total_stars_page;
 	while ( $status ) {
 		$new = fetch_recent_stars( $repo, $stars_show_count, $page-- );
+		if ( empty( $new ) ) {
+			$status = false;
+			break;
+		}
 		krsort( $new );
 		foreach ( $new as $owner_info ) {
 			$retun[] = $owner_info;
@@ -45,12 +54,12 @@ if ( false !== $stars ) {
 			}
 		}
 
-		if ( count( $retun ) == $stars_show_count || count( $retun ) > $stars_show_count ) {
+		if ( count( $retun ) == $stars_show_count ) {
 			$status = false;
 			break;
 		}
 
-		if ( count( $retun ) > $stars_show_count ) {
+		if ( $page < 0 || $page === 0 ) {
 			$status = false;
 			break;
 		}
