@@ -45,7 +45,12 @@ if ( false !== $stars ) {
 			}
 		}
 
-		if ( count( $retun ) == $stars_show_count ) {
+		if ( count( $retun ) == $stars_show_count || count( $retun ) > $stars_show_count ) {
+			$status = false;
+			break;
+		}
+
+		if ( count( $retun ) > $stars_show_count ) {
 			$status = false;
 			break;
 		}
