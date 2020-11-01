@@ -2,7 +2,7 @@ name: 'Repository Roster'
 description: 'Shout-out supporters in your GitHub README file'
 author: 'varunsridharan'
 branding:
-  icon: 'speaker'
+  icon: 'users'
   color: 'green'
 
 inputs:
