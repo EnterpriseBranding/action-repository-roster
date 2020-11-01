@@ -72,5 +72,7 @@ if ( false !== $forks ) {
 	}
 
 	$html = generate_output( $fork_output_type, $base_response, $fork_description );
-	save_output( $fork_output_type, $html, $forks, 'REPOSITORY_FORKS' );
+	$file = save_output( $fork_output_type, $html, $forks, 'REPOSITORY_FORKS' );
+	shell_exec( 'git add -f ' . $file );
+	shell_exec( 'git commit -m "[Repository Roster] Updated :cyclone: Forkers Information" ' );
 }

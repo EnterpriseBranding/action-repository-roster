@@ -26,5 +26,6 @@ HTML;
 
 		$content = str_replace( $str_find, $output, $content );
 		file_put_contents( WORK_DIR . $save_to, $content );
+		return WORK_DIR . $save_to;
 	}
 }
