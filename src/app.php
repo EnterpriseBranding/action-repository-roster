@@ -14,6 +14,7 @@ $repos = array( gh_env( 'GITHUB_REPOSITORY' ) );
 require_once APP_PATH . 'functions.php';
 
 foreach ( $repos as $repo ) {
+	var_dump( sprintf( 'repos/%s', $repo ) );
 	$repo_info = $github_api->decode( $github_api->get( sprintf( 'repos/%s', $repo ) ) );
 
 	var_dump( $repo_info );
