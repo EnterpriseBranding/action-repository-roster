@@ -9,13 +9,6 @@ if ( false !== $forks ) {
 	$fork_output_type = gh_input( 'FORK_OUTPUT_TYPE', 'markdown' );
 	$fork_show_count  = gh_input( 'FORK_COUNTS', 7 );
 	$fork_description = gh_input( 'FORK_DESCRIPTION', '' );
-
-	print_r( "forks : $forks" );
-	print_r( "fork_output_type : $fork_output_type" );
-	print_r( "fork_show_count : $fork_show_count" );
-	print_r( "fork_description : $fork_description" );
-	print_r( "api_fork_per_page : $api_fork_per_page" );
-	exit;
 	$total_forks_count = ( isset( $repo_info->forks_count ) && ! empty( $repo_info->forks_count ) ) ? $repo_info->forks_count : '';
 
 	function fetch_recent_forks( $repo, $limit = 10, $page = '1' ) {
