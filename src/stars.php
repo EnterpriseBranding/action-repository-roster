@@ -6,13 +6,13 @@ $stars              = gh_input( 'STARS', 'README.md' );
 
 if ( false !== $stars ) {
 	$stars             = ( true === $stars ) ? 'README.md' : $stars;
-	$stars_output_type = gh_input( 'STARS_OUTPUT_TYPE', 'markdown' );
+	$stars_output_type = gh_input( 'STARS_OUTPUT_TYPE', 'image' );
 	$stars_show_count  = gh_input( 'STARS_COUNTS', 7 );
 	$stars_description = gh_input( 'STARS_DESCRIPTION', '' );
 	$total_stars_count = ( isset( $repo_info->stargazers_count ) && ! empty( $repo_info->stargazers_count ) ) ? $repo_info->stargazers_count : '';
 
 	if ( empty( $total_stars_count ) ) {
-		$html = '';
+		$html = '<i>Nobody has starred this repository <b>yet</b>.</i>';
 	} else {
 		$total_stars_page = ceil( $total_stars_count / $api_stars_per_page );
 

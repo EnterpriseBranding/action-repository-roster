@@ -12,7 +12,7 @@ if ( false !== $forks ) {
 	$total_forks_count = ( isset( $repo_info->forks_count ) && ! empty( $repo_info->forks_count ) ) ? $repo_info->forks_count : '';
 
 	if ( empty( $total_forks_count ) ) {
-		$html = '';
+		$html = '<i>Nobody has forked this repository <b>yet</b>.</i>';
 	} else {
 		function fetch_recent_forks( $repo, $limit = 10, $page = '1' ) {
 			global $github_api, $api_fork_per_page;
