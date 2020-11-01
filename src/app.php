@@ -12,8 +12,7 @@ $repos = array( gh_env( 'GITHUB_REPOSITORY' ) );
 
 
 require_once APP_PATH . 'functions.php';
-print_r( $repos );
-exit;
+
 foreach ( $repos as $repo ) {
 	$repo_info = $github_api->decode( $github_api->get( sprintf( 'repos/%s', $repo ) ) );
 	require_once APP_PATH . 'forks.php';
