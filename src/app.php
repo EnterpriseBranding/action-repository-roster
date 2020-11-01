@@ -8,7 +8,7 @@ define( 'APP_PATH', __DIR__ . '/' );
 
 define( 'WORK_DIR', gh_env( 'GITHUB_WORKSPACE' ) );
 
-$repos = array( get_env( 'GITHUB_REPOSITORY' ) );
+$repos = array( gh_env( 'GITHUB_REPOSITORY' ) );
 
 
 require_once APP_PATH . 'functions.php';
