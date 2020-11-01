@@ -12,6 +12,8 @@ $repos = array( gh_env( 'GITHUB_REPOSITORY' ) );
 
 require_once APP_PATH . 'functions.php';
 
+$github_api = new \Milo\Github\Api();
+
 foreach ( $repos as $repo ) {
 	try {
 		$repo_info = $github_api->decode( $github_api->get( 'repos/' . $repo ) );
@@ -20,7 +22,6 @@ foreach ( $repos as $repo ) {
 	} catch ( \Milo\Github\RateLimitExceedException $exception ) {
 		print_r( $exception );
 	}
-
 }
 
 
