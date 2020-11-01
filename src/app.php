@@ -16,7 +16,7 @@ require_once APP_PATH . 'functions.php';
 foreach ( $repos as $repo ) {
 	$repo_info = $github_api->decode( $github_api->get( sprintf( 'repos/%s', $repo ) ) );
 	require_once APP_PATH . 'forks.php';
-	require_once APP_PATH . 'stars.php';
+	#require_once APP_PATH . 'stars.php';
 }
 
 
