@@ -38,11 +38,18 @@ if ( false !== $stars ) {
 		$retun  = array();
 		$page   = $total_stars_page;
 		while ( $status ) {
+			if ( 0 === $page ) {
+				$status = false;
+				break;
+			}
+			print_r( $page );
 			$new = fetch_recent_stars( $repo, $stars_show_count, $page-- );
 			if ( empty( $new ) ) {
 				$status = false;
 				break;
 			}
+			print_r( $new );
+			print_r( $page );
 			krsort( $new );
 			foreach ( $new as $owner_info ) {
 				$retun[] = $owner_info;
@@ -76,10 +83,8 @@ if ( false !== $stars ) {
 			}
 			$stars_description = str_replace( '[count]', $total_stars_count, $stars_description );
 		}
-		print_r( $retun );
 		$html = generate_output( $stars_output_type, $retun, $stars_description );
 	}
-
 
 
 	$file = save_output( $stars_output_type, $html, $stars, 'REPOSITORY_STARS' );
