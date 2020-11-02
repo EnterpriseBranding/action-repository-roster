@@ -1,26 +1,34 @@
 <?php
 function image_style( $type ) {
-	$css = <<<CSS
-.user-info {
-	display: inline-block;
-	margin-right: 15px;
-	text-align: center;
-	margin-bottom: 15px;
-}
+	$css  = file_get_contents( APP_PATH . 'output/image-default.css' );
+	$type = explode( '-', trim( $type ) );
 
-.user-info sub{
-display: block;
-}
-
-.user-info img {
-	border-radius: 50%;
-	max-width: 75px
-}
-CSS;
-
-	switch ( $type ) {
-
+	foreach ( $type as $style ) {
+		switch ( $style ) {
+			case 'noimage':
+				$css .= '.user-info img {display:none !important;}';
+				break;
+			case 'noname':
+				$css .= '.user-info sub {display:none !important;}';
+				break;
+			case 'square':
+				$css .= '.user-info img {border-radius:10px;}';
+				break;
+			case 'rounded':
+				$css .= '.user-info img {border-radius:50%;}';
+				break;
+			case 'italic':
+				$css .= '.user-info sub {font-style:italic;}';
+				break;
+			case 'imglarge':
+				$css .= '.user-info img {max-width: 100px}';
+				break;
+			case 'imgsmall':
+				$css .= '.user-info img {max-width: 50px}';
+				break;
+		}
 	}
+
 	return $css;
 }
 
@@ -32,6 +40,7 @@ function generate_image( $data, $style, $desc ) {
 	$svg        .= '<foreignObject width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml">';
 	$svg        .= <<<HTML
 <style>$css</style>
+<div class="container">
 HTML;
 
 	foreach ( $data as $info ) {
@@ -43,6 +52,9 @@ HTML;
 </div>
 HTML;
 	}
-	$svg .= '</div></foreignObject></svg>';
+	$svg .= '</div>';
+
+	$svg .= '<div class="description">' . $desc . '</div>';
+	$svg .= '</div ></foreignObject ></svg > ';
 	return $svg;
 }
