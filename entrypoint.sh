@@ -13,4 +13,5 @@ GIT_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.
 
 php /action-repository-roster/app.php
 
+git pull
 git push $GIT_URL
