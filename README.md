@@ -3,7 +3,89 @@
 ~ Shout-out supporters in your GitHub README file. ~ 
 </p>
 
-## ⚙️Installation
+## ⚙️Configuration
+<table>
+    <tr>
+        <th>Option</th>
+        <th>Description</th>
+        <th>Default</th>
+    </tr>
+    <tr> <th colspan="3">General Config</th> </tr>
+    <tr>
+        <td><code>IMAGE_SAVE_PATH</code></td>
+        <td>
+            Custom location on where to save generated <strong>SVG</strong> image file. <br/>
+            <i>Image Files Are Generated When Output Type Set To <code>image</code></i>
+        </td>
+        <td><code>.github/roster/</code></td>
+    </tr>
+    <tr> <th colspan="3">Forks Config</th> </tr>
+    <tr>
+        <td><code>FORK</code></td>
+        <td>
+            Set to <strong>true</strong> to generate latest forked users information. or provide a file location to update the information <br/>
+            If its set to <strong>FALSE</strong> the forked users information will not be generated
+        </td>
+        <td><code>README.md</code></td>
+    </tr>
+    <tr>
+        <td><code>FORK_OUTPUT_TYPE</code></td>
+        <td>this can be set to either <strong>markdown</strong> OR <strong>image</strong></td>
+        <td><code>markdown</code></td>
+    </tr>
+    <tr>
+        <td><code>FORK_OUTPUT_STYLE</code></td>
+        <td>Please Refer <a href="#styling">Styling Option</a> Below</td>
+        <td><code>table</code></td>
+    </tr>
+    <tr>
+        <td><code>FORK_COUNTS</code></td>
+        <td>No of latest forked users to generate</td>
+        <td><code>7</code></td>
+    </tr>
+    <tr>
+        <td><code>FORK_DESCRIPTION</code></td>
+        <td>
+            set to <strong>true</strong> to show default description after Forks users information. <br/>
+            or you can also provide your custom text to show after the Forks users information.
+            if its set to <strong>FALSE</strong> description will not be generated        
+        </td>
+        <td><code>true</code></td>
+    </tr>
+    <tr> <th colspan="3">Stars Config</th> </tr>
+    <tr>
+        <td><code>STARS</code></td>
+        <td>
+            Set to <strong>true</strong> to generate latest Stargazers users information. or provide a file location to update the information <br/>
+            If its set to <strong>FALSE</strong> the Stargazers users information will not be generated
+        </td>
+        <td><code>README.md</code></td>
+    </tr>
+    <tr>
+        <td><code>STARS_OUTPUT_TYPE</code></td>
+        <td>this can be set to either <strong>markdown</strong> OR <strong>image</strong></td>
+        <td><code>markdown</code></td>
+    </tr>
+    <tr>
+        <td><code>STARS_OUTPUT_STYLE</code></td>
+        <td>Please Refer <a href="#styling">Styling Option</a> Below</td>
+        <td><code>table</code></td>
+    </tr>
+    <tr>
+        <td><code>STARS_COUNTS</code></td>
+        <td>No of latest Stargazers users to generate</td>
+        <td><code>7</code></td>
+    </tr>
+    <tr>
+        <td><code>STARS_DESCRIPTION</code></td>
+        <td>
+            set to <strong>true</strong> to show default description after Stargazers users information. <br/>
+            or you can also provide your custom text to show after the Stargazers users information.
+            if its set to <strong>FALSE</strong> description will not be generated        
+        </td>
+        <td><code>true</code></td>
+    </tr>
+</table>
 
 ## 🚀 Usage
 

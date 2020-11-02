@@ -26,6 +26,11 @@ inputs:
     required: false
     default: '7'
 
+  FORK_OUTPUT_STYLE:
+    description: 'Style options for [markdown / image].'
+    required: false
+    default: 'table'
+
   FORK_DESCRIPTION:
     description: 'Custom Description to Show Below Forked Users Information'
     required: false
@@ -45,6 +50,11 @@ inputs:
     description: 'No of Latest starred Users Information To Show.'
     required: false
     default: '7'
+
+  STARS_OUTPUT_STYLE:
+    description: 'Style options for [markdown / image].'
+    required: false
+    default: 'table'
 
   STARS_DESCRIPTION:
     description: 'Custom Description to Show Below starred Users Information'
