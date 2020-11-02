@@ -6,5 +6,5 @@
 
 
 <!-- REPOSITORY_FORKS:START -->
-[![Forkers repo roster for @varunsridharan/demo-repository-roster](https://raw.githubusercontent.com/varunsridharan/demo-repository-roster/blob/main/.github/common/images/forks-custom.svg)](https://raw.githubusercontent.com/varunsridharan/demo-repository-roster/stargazers)
+[![Forkers repo roster for @varunsridharan/demo-repository-roster](https://raw.githubusercontent.com/varunsridharan/demo-repository-roster/blob/main/.github/roster/forks.svg)](https://raw.githubusercontent.com/varunsridharan/demo-repository-roster/stargazers)
 <!-- REPOSITORY_FORKS:END -->
