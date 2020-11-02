@@ -179,6 +179,8 @@
     </tr>
 </table>
 
+> You can provide multiple styles in `*_OUTPUT_STYLE` by entering `,` separated | Example : `img-small,bold,italic`
+
 #### Example Code
  ```yaml
 # Below Will Render Stargazers Data In HTML Table With small user avatar
