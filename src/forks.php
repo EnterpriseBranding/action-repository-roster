@@ -6,38 +6,16 @@ $forks             = gh_input( 'FORK', 'README.md' );
 
 if ( false !== $forks ) {
 	$forks             = ( true === $forks ) ? 'README.md' : $forks;
-	$fork_output_type  = gh_input( 'FORK_OUTPUT_TYPE', 'markdown' );
+	$fork_output_type  = gh_input( 'FORK_OUTPUT_TYPE', 'image' );
+	$fork_output_style = gh_input( 'FORK_OUTPUT_STYLE', 'table' );
 	$fork_show_count   = gh_input( 'FORK_COUNTS', 7 );
 	$fork_description  = gh_input( 'FORK_DESCRIPTION', '' );
 	$total_forks_count = ( isset( $repo_info->forks_count ) && ! empty( $repo_info->forks_count ) ) ? $repo_info->forks_count : '';
 
 	if ( empty( $total_forks_count ) ) {
-		$html = '<i>Nobody has forked this repository <b>yet</b>.</i>';
+		$base_response = '<i>Nobody has forked this repository <b>yet</b>.</i>';
 	} else {
-		function fetch_recent_forks( $repo, $limit = 10, $page = '1' ) {
-			global $github_api, $api_fork_per_page;
-			$data     = $github_api->decode( $github_api->get( sprintf( 'repos/%s/forks?sort=newest&per_page=' . $api_fork_per_page . '&page=' . $page, $repo ) ) );
-			$response = array();
-			foreach ( $data as $fork ) {
-				if ( ! isset( $fork->owner ) ) {
-					continue;
-				}
-
-				$response[] = array(
-					'owner'      => $fork->owner->login,
-					'avatar_url' => $fork->owner->avatar_url,
-					'html_url'   => $fork->owner->html_url,
-				);
-
-				if ( 0 !== $response && count( $response ) == $limit ) {
-					break;
-				}
-			}
-			return $response;
-		}
-
 		$base_response = fetch_recent_forks( $repo, $fork_show_count );
-
 		if ( count( $base_response ) < $fork_show_count ) {
 			$status = true;
 			$page   = 2;
@@ -80,11 +58,9 @@ if ( false !== $forks ) {
 			}
 			$fork_description = str_replace( '[count]', $total_forks_count, $fork_description );
 		}
-
-		$html = generate_output( $fork_output_type, $base_response, $fork_description );
 	}
 
-	$file = save_output( $fork_output_type, $html, $forks, 'REPOSITORY_FORKS' );
-	shell_exec( 'git add -f ' . $file );
-	shell_exec( 'git commit -m "[Repository Roster] Updated :cyclone: Forkers Information" ' );
+	$html = generate_output( 'forks', $fork_output_type, $base_response, $fork_output_style, $fork_description );
+	$file = save_output( $html, $forks, 'REPOSITORY_FORKS' );
+	gh_commit( $file, '[Repository Roster] Updated :cyclone: Latest Forked Users' );
 }

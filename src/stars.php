@@ -5,34 +5,17 @@ $api_stars_per_page = 100;
 $stars              = gh_input( 'STARS', 'README.md' );
 
 if ( false !== $stars ) {
-	$stars             = ( true === $stars ) ? 'README.md' : $stars;
-	$stars_output_type = gh_input( 'STARS_OUTPUT_TYPE', 'image' );
-	$stars_show_count  = gh_input( 'STARS_COUNTS', 7 );
-	$stars_description = gh_input( 'STARS_DESCRIPTION', '' );
-	$total_stars_count = ( isset( $repo_info->stargazers_count ) && ! empty( $repo_info->stargazers_count ) ) ? $repo_info->stargazers_count : '';
+	$stars              = ( true === $stars ) ? 'README.md' : $stars;
+	$stars_output_type  = gh_input( 'STARS_OUTPUT_TYPE', 'image' );
+	$stars_output_style = gh_input( 'STARS_OUTPUT_STYLE', 'table' );
+	$stars_show_count   = gh_input( 'STARS_COUNTS', 7 );
+	$stars_description  = gh_input( 'STARS_DESCRIPTION', '' );
+	$total_stars_count  = ( isset( $repo_info->stargazers_count ) && ! empty( $repo_info->stargazers_count ) ) ? $repo_info->stargazers_count : '';
 
 	if ( empty( $total_stars_count ) ) {
-		$html = '<i>Nobody has starred this repository <b>yet</b>.</i>';
+		$retun = '<i>Nobody has starred this repository <b>yet</b>.</i>';
 	} else {
 		$total_stars_page = ceil( $total_stars_count / $api_stars_per_page );
-
-		function fetch_recent_stars( $repo, $limit = 10, $page = '1' ) {
-			global $github_api, $api_stars_per_page;
-			$data     = $github_api->decode( $github_api->get( sprintf( 'repos/%s/stargazers?per_page=' . $api_stars_per_page . '&page=' . $page, $repo ) ) );
-			$response = array();
-			foreach ( $data as $_star ) {
-				if ( ! isset( $_star->login ) ) {
-					continue;
-				}
-
-				$response[] = array(
-					'owner'      => $_star->login,
-					'avatar_url' => $_star->avatar_url,
-					'html_url'   => $_star->html_url,
-				);
-			}
-			return $response;
-		}
 
 		$status = true;
 		$retun  = array();
@@ -81,11 +64,9 @@ if ( false !== $stars ) {
 			}
 			$stars_description = str_replace( '[count]', $total_stars_count, $stars_description );
 		}
-		$html = generate_output( $stars_output_type, $retun, $stars_description );
 	}
 
-
-	$file = save_output( $stars_output_type, $html, $stars, 'REPOSITORY_STARS' );
-	shell_exec( 'git add -f ' . $file );
-	shell_exec( 'git commit -m "[Repository Roster] Updated :star2: Stargazers Information" ' );
+	$html = generate_output( 'stars', $stars_output_type, $retun, $stars_output_style, $stars_description );
+	$file = save_output( $html, $stars, 'REPOSITORY_STARS' );
+	gh_commit( $file, '[Repository Roster] Updated :star2: Latest Stargazers Users' );
 }
