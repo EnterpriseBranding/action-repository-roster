@@ -15,6 +15,7 @@
 
 ### ↳ Forkers
 <!-- REPOSITORY_FORKS:START -->
+<i>Nobody has forked this repository <b>yet</b>.</i>
 <!-- REPOSITORY_FORKS:END -->
 
 ---
