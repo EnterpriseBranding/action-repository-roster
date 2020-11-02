@@ -15,7 +15,7 @@ function image_style( $type ) {
 				$css .= '.user-info img {display:none !important;}';
 				break;
 			case 'no-name':
-				$css .= '.user-info sub {display:none !important;}';
+				$css .= '.user-info span {display:none !important;}';
 				break;
 			case 'img-smooth':
 				$css .= '.user-info img {border-radius:10px;}';
@@ -24,10 +24,10 @@ function image_style( $type ) {
 				$css .= '.user-info img {border-radius:50%;}';
 				break;
 			case 'italic':
-				$css .= '.user-info sub {font-style:italic;}';
+				$css .= '.user-info span {font-style:italic;}';
 				break;
 			case 'bold':
-				$css .= '.user-info sub {font-weight:bold;}';
+				$css .= '.user-info span {font-weight:bold;}';
 				break;
 			case 'img-large':
 				$css .= '.user-info img {max-width: 100px}';
