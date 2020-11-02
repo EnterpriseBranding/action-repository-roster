@@ -1,8 +1,5 @@
 name: "🙏 Repository Roster"
 
-env:
-  VS_WORKFLOW_TYPE: "repository-roster"
-
 on:
   workflow_dispatch:
   watch:
