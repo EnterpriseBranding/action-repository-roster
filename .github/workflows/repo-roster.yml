@@ -1,8 +1,5 @@
 name: "🙏 Repository Roster"
 
-env:
-  VS_WORKFLOW_TYPE: "repository-roster"
-
 on:
   workflow_dispatch:
   watch:
@@ -19,9 +16,6 @@ jobs:
         uses: actions/checkout@main
 
       - name: "🐔  Markdown - Repository Roster"
-        uses: "./"
-        with:
-          STARS_OUTPUT_TYPE: 'markdown'
-          FORK_OUTPUT_TYPE: 'markdown'
+        uses: "varunsridharan/action-repository-roster@main"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
