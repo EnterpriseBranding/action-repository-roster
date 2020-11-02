@@ -12,8 +12,12 @@ require_once APP_PATH . 'functions.php';
 try {
 	$repo      = gh_env( 'GITHUB_REPOSITORY' );
 	$repo_info = $github_api->decode( $github_api->get( 'repos/' . $repo ) );
+	gh_log();
 	require_once APP_PATH . 'forks.php';
+	gh_log();
+	gh_log();
 	require_once APP_PATH . 'stars.php';
+	gh_log();
 } catch ( \Milo\Github\RateLimitExceedException $exception ) {
 	print_r( $exception );
 }
