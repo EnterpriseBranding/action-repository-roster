@@ -19,7 +19,7 @@ inputs:
   FORK_OUTPUT_TYPE:
     description: 'You can set the output type of forked users information. it can be either [markdown / image].'
     required: false
-    default: 'markdown'
+    default: 'table'
 
   FORK_COUNTS:
     description: 'No of Latest Forked Users Information To Show.'
@@ -29,7 +29,7 @@ inputs:
   FORK_OUTPUT_STYLE:
     description: 'Style options for [markdown / image].'
     required: false
-    default: 'table'
+    default: ''
 
   FORK_DESCRIPTION:
     description: 'Custom Description to Show Below Forked Users Information'
@@ -44,7 +44,7 @@ inputs:
   STARS_OUTPUT_TYPE:
     description: 'You can set the output type of starred users information. it can be either [markdown / image].'
     required: false
-    default: 'markdown'
+    default: 'table'
 
   STARS_COUNTS:
     description: 'No of Latest starred Users Information To Show.'
@@ -54,7 +54,7 @@ inputs:
   STARS_OUTPUT_STYLE:
     description: 'Style options for [markdown / image].'
     required: false
-    default: 'table'
+    default: ''
 
   STARS_DESCRIPTION:
     description: 'Custom Description to Show Below starred Users Information'
