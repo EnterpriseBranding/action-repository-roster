@@ -13,38 +13,40 @@ if ( false !== $forks ) {
 	$total_forks_count = ( isset( $repo_info->forks_count ) && ! empty( $repo_info->forks_count ) ) ? $repo_info->forks_count : '';
 
 	if ( empty( $total_forks_count ) ) {
-		$base_response = '<i>Nobody has forked this repository <b>yet</b>.</i>';
+		$return = '<i>Nobody has forked this repository <b>yet</b>.</i>';
 	} else {
-		$base_response = fetch_recent_forks( $repo, $fork_show_count );
-		if ( count( $base_response ) < $fork_show_count ) {
-			$status = true;
-			$page   = 2;
-			while ( $status ) {
-				$new = fetch_recent_forks( $repo, $fork_show_count, $page++ );
-				if ( empty( $new ) ) {
-					$status = false;
-					break;
-				}
-				foreach ( $new as $owner_info ) {
-					$base_response[] = $owner_info;
+		$return = array();
+		$status = true;
+		$page   = 1;
 
-					if ( count( $base_response ) == $fork_show_count ) {
-						$status = false;
-						break;
-					}
-				}
+		gh_log_group_start( 'Latest Forked Users Info' );
+		while ( $status ) {
+			$new = fetch_recent_forks( $repo, $fork_show_count, $page++ );
+			if ( empty( $new ) ) {
+				$status = false;
+				break;
+			}
+			foreach ( $new as $owner_info ) {
+				$return[] = $owner_info;
 
-				if ( count( $base_response ) == $fork_show_count ) {
-					$status = false;
-					break;
-				}
-
-				if ( $page > $total_forks_count || $page === $total_forks_count ) {
+				if ( count( $return ) == $fork_show_count ) {
 					$status = false;
 					break;
 				}
 			}
+
+			if ( count( $return ) == $fork_show_count ) {
+				$status = false;
+				break;
+			}
+
+			if ( $page > $total_forks_count || $page === $total_forks_count ) {
+				$status = false;
+				break;
+			}
 		}
+		gh_log( print_r( $return, true ) );
+		gh_log_group_end();
 
 		if ( false !== $fork_description ) {
 			if ( empty( $fork_description ) ) {
@@ -60,7 +62,20 @@ if ( false !== $forks ) {
 		}
 	}
 
-	$html = generate_output( 'forks', $fork_output_type, $base_response, $fork_output_style, $fork_description );
+	gh_log( '' );
+	gh_log( 'Output Config' );
+	gh_log( '	-- File : ' . $forks );
+	gh_log( '	-- Type : ' . $fork_output_type );
+	gh_log( '	-- Style : ' . $fork_output_style );
+	gh_log( '	-- Description : ' . $fork_description );
+	gh_log( '' );
+
+
+	$html = generate_output( 'forks', $fork_output_type, $return, $fork_output_style, $fork_description );
 	$file = save_output( $html, $forks, 'REPOSITORY_FORKS' );
+
+	gh_log( 'Output' );
+	gh_log( $html );
+
 	gh_commit( $file, '[Repository Roster] Updated :cyclone: Latest Forked Users' );
 }

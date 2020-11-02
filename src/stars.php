@@ -17,6 +17,7 @@ if ( false !== $stars ) {
 	} else {
 		$total_stars_page = ceil( $total_stars_count / $api_stars_per_page );
 
+		gh_log_group_start( 'Latest Stargazers Users Info' );
 		$status = true;
 		$retun  = array();
 		$page   = $total_stars_page;
@@ -51,6 +52,8 @@ if ( false !== $stars ) {
 				break;
 			}
 		}
+		gh_log( print_r( $retun, true ) );
+		gh_log_group_end();
 
 		if ( false !== $stars_description ) {
 			if ( empty( $stars_description ) ) {
@@ -66,7 +69,19 @@ if ( false !== $stars ) {
 		}
 	}
 
+	gh_log( '' );
+	gh_log( 'Output Config' );
+	gh_log( '	-- File : ' . $stars );
+	gh_log( '	-- Type : ' . $stars_output_type );
+	gh_log( '	-- Style : ' . $stars_output_style );
+	gh_log( '	-- Description : ' . $stars_description );
+	gh_log( '' );
+
 	$html = generate_output( 'stars', $stars_output_type, $retun, $stars_output_style, $stars_description );
 	$file = save_output( $html, $stars, 'REPOSITORY_STARS' );
+
+	gh_log( 'Output' );
+	gh_log( $html );
+
 	gh_commit( $file, '[Repository Roster] Updated :star2: Latest Stargazers Users' );
 }
