@@ -3,7 +3,24 @@
 ~ Shout-out supporters in your GitHub README file. ~ 
 </p>
 
-## ⚙️Configuration
+## 🚀  Usage
+1. [Setup Action Workflow File](#-github-action-workflow-file)
+2. Update Your `README.md` with below code
+
+### Repository Stargazers
+ ```
+## ↳ Stargazers
+<!-- REPOSITORY_STARS:START --><!-- REPOSITORY_STARS:END -->
+```
+
+### Repository Forks
+ ```
+## ↳ Forkers
+<!-- REPOSITORY_FORKS:START --><!-- REPOSITORY_FORKS:END -->
+```
+
+
+## ⚙️ Configuration
 <table>
     <tr>
         <th>Option</th>
