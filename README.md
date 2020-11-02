@@ -30,12 +30,12 @@
     </tr>
     <tr>
         <td><code>FORK_OUTPUT_TYPE</code></td>
-        <td>this can be set to either <strong>markdown</strong> OR <strong>image</strong></td>
+        <td>this can be set to either <strong>table</strong>, <strong>list</strong> OR <strong>image</strong></td>
         <td><code>markdown</code></td>
     </tr>
     <tr>
         <td><code>FORK_OUTPUT_STYLE</code></td>
-        <td>Please Refer <a href="#paintbrush--styling-options">:paintbrush: Styling Options</a> Below</td>
+        <td>Please Refer <a href="#paintbrush-styling-options">:paintbrush: Styling Options</a> Below</td>
         <td><code>table</code></td>
     </tr>
     <tr>
@@ -63,12 +63,12 @@
     </tr>
     <tr>
         <td><code>STARS_OUTPUT_TYPE</code></td>
-        <td>this can be set to either <strong>markdown</strong> OR <strong>image</strong></td>
+        <td>this can be set to either <strong>table</strong>, <strong>list</strong> OR <strong>image</strong></td>
         <td><code>markdown</code></td>
     </tr>
     <tr>
         <td><code>STARS_OUTPUT_STYLE</code></td>
-        <td>Please Refer <a href="#paintbrush--styling-options">:paintbrush: Styling Options</a> Below</td>
+        <td>Please Refer <a href="#paintbrush-styling-options">:paintbrush: Styling Options</a> Below</td>
         <td><code>table</code></td>
     </tr>
     <tr>
@@ -88,6 +88,86 @@
 </table>
 
 ### :paintbrush: Styling Options
+<table>
+    <tr>
+        <th>Option</th>
+        <th>Description</th>
+        <th colspan="3">Output Types</th>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+        <th>Image</th>
+        <th>Table</th>
+        <th>List</th>
+    </tr>
+    <tr>
+        <td><code>no-image</code></td>
+        <td>User's avatar will not be rendered</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td><code>img-smooth</code></td>
+        <td>User's avatar will slightly rounded</td>
+        <td align="center">✔</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td><code>img-rounded</code></td>
+        <td>User's avatar will rounded</td>
+        <td align="center">✔</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td><code>img-small</code></td>
+        <td>User's avatar will be set to small size</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td><code>img-large</code></td>
+        <td>User's avatar will be set to large size</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td><code>no-name</code></td>
+        <td>User's name will not be rendered</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td><code>no-link</code></td>
+        <td>Link to users github profile will not be added</td>
+        <td align="center">❌</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+    </tr>
+    <tr>
+        <td><code>list-ordered</code></td>
+        <td>HTML list will be ordered</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+        <td align="center">✔</td>
+    </tr>
+</table>
+
+#### Example Code
+ ```yaml
+# Below Will Render Stargazers Data In HTML Table With small user avatar
+STARS_OUTPUT_TYPE: 'table' # Possible Options [ image , table , list ]
+STARS_OUTPUT_STYLE: 'img-small'
+
+# Below Will Render Fork's Data In SVG Image with small user avatar & user's name hidden
+FORK_OUTPUT_TYPE: 'image' # Possible Options [ image , table , list ]
+FORK_OUTPUT_STYLE: 'img-small,no-name'
+ ```
 
 ## 🚀 Usage
 
