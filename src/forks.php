@@ -6,8 +6,8 @@ $forks             = gh_input( 'FORK', 'README.md' );
 
 if ( false !== $forks ) {
 	$forks             = ( true === $forks ) ? 'README.md' : $forks;
-	$fork_output_type  = gh_input( 'FORK_OUTPUT_TYPE', 'image' );
-	$fork_output_style = gh_input( 'FORK_OUTPUT_STYLE', 'table' );
+	$fork_output_type  = gh_input( 'FORK_OUTPUT_TYPE', 'table' );
+	$fork_output_style = gh_input( 'FORK_OUTPUT_STYLE', '' );
 	$fork_show_count   = gh_input( 'FORK_COUNTS', 7 );
 	$fork_description  = gh_input( 'FORK_DESCRIPTION', '' );
 	$total_forks_count = ( isset( $repo_info->forks_count ) && ! empty( $repo_info->forks_count ) ) ? $repo_info->forks_count : '';

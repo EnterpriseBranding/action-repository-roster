@@ -10,16 +10,14 @@ function generate_markdown_list( $data, $show_description = true, $style = '', $
 			$html .= "<a href=\"{$info['html_url']}\" rel=\"nofollow\">";
 		}
 
-		if ( ! in_array( 'no-name', $style ) ) {
-			$html .= ( in_array( 'small', $style ) ) ? '<sub>' : '';
-			$html .= ( in_array( 'bold', $style ) ) ? '<b>' : '';
-			$html .= ( in_array( 'italic', $style ) ) ? '<i>' : '';
-			$html .= "@{$info['owner']}";
-			$html .= ( in_array( 'italic', $style ) ) ? '</i>' : '';
-			$html .= ( in_array( 'bold', $style ) ) ? '</b>' : '';
-			$html .= ( in_array( 'small', $style ) ) ? '</sub>' : '';
-			$html .= ' <br/> ';
-		}
+		$html .= ( in_array( 'small', $style ) ) ? '<sub>' : '';
+		$html .= ( in_array( 'bold', $style ) ) ? '<b>' : '';
+		$html .= ( in_array( 'italic', $style ) ) ? '<i>' : '';
+		$html .= "@{$info['owner']}";
+		$html .= ( in_array( 'italic', $style ) ) ? '</i>' : '';
+		$html .= ( in_array( 'bold', $style ) ) ? '</b>' : '';
+		$html .= ( in_array( 'small', $style ) ) ? '</sub>' : '';
+		$html .= ' <br/> ';
 
 		if ( ! in_array( 'no-link', $style ) ) {
 			$html .= '</a> ';

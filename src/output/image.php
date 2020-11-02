@@ -8,9 +8,7 @@
  * @return false|string
  */
 function image_style( $type ) {
-	$css  = file_get_contents( APP_PATH . 'output/image-default.css' );
-	$type = explode( ',', trim( $type ) );
-
+	$css = file_get_contents( APP_PATH . 'output/image-default.css' );
 	foreach ( $type as $style ) {
 		switch ( $style ) {
 			case 'no-image':
@@ -19,14 +17,17 @@ function image_style( $type ) {
 			case 'no-name':
 				$css .= '.user-info sub {display:none !important;}';
 				break;
-			case 'square':
+			case 'img-smooth':
 				$css .= '.user-info img {border-radius:10px;}';
 				break;
-			case 'rounded':
+			case 'img-rounded':
 				$css .= '.user-info img {border-radius:50%;}';
 				break;
 			case 'italic':
 				$css .= '.user-info sub {font-style:italic;}';
+				break;
+			case 'bold':
+				$css .= '.user-info sub {font-weight:bold;}';
 				break;
 			case 'img-large':
 				$css .= '.user-info img {max-width: 100px}';
@@ -41,6 +42,7 @@ function image_style( $type ) {
 }
 
 function generate_image( $data, $style, $desc ) {
+	$style      = explode( ',', trim( $style ) );
 	$css        = image_style( $style );
 	$svg_width  = '800';
 	$svg_height = 'auto';
@@ -52,11 +54,12 @@ function generate_image( $data, $style, $desc ) {
 HTML;
 	if ( is_array( $data ) ) {
 		foreach ( $data as $info ) {
-			$image = convert_image_to_base64( $info['avatar_url'] );
-			$svg   .= <<<HTML
+			$image      = convert_image_to_base64( $info['avatar_url'] );
+			$owner_name = ( in_array( 'small', $style ) ) ? "<sub>@{$info['owner']}</sub>" : "@{$info['owner']}";
+			$svg        .= <<<HTML
 <div class="user-info">
 	<img src="{$image}" alt="@{$info['owner']}"/>
-	<sub><b>@{$info['owner']}</b></sub> 
+	<span>{$owner_name}</span>
 </div>
 HTML;
 		}

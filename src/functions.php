@@ -1,6 +1,5 @@
 <?php
 require_once APP_PATH . 'output/table.php';
-require_once APP_PATH . 'output/markdown.php';
 require_once APP_PATH . 'output/image.php';
 require_once APP_PATH . 'output/list.php';
 
@@ -46,7 +45,7 @@ function fetch_recent_stars( $repo, $limit = 10, $page = '1' ) {
 
 /**
  * @param string $data_type -- forks/stars
- * @param string $output_type -- markdown/image
+ * @param string $output_type -- list/table/image
  * @param array  $data -- array
  * @param string $style --- string of styles
  * @param string $description -- custom description
@@ -55,8 +54,13 @@ function fetch_recent_stars( $repo, $limit = 10, $page = '1' ) {
  */
 function generate_output( $data_type, $output_type, $data, $style, $description ) {
 	global $repo;
-	if ( 'markdown' === $output_type ) {
-		return generate_markdown_output( $data, $style, $description );
+
+	if ( 'table' === $output_type ) {
+		return is_string( $data ) ? $data : generate_markdown_table( $data, $description, $style );
+	}
+
+	if ( 'list' == $output_type ) {
+		return is_string( $data ) ? $data : generate_markdown_list( $data, $description, $style );
 	}
 
 	if ( 'image' === $output_type ) {

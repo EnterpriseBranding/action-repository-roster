@@ -6,8 +6,8 @@ $stars              = gh_input( 'STARS', 'README.md' );
 
 if ( false !== $stars ) {
 	$stars              = ( true === $stars ) ? 'README.md' : $stars;
-	$stars_output_type  = gh_input( 'STARS_OUTPUT_TYPE', 'image' );
-	$stars_output_style = gh_input( 'STARS_OUTPUT_STYLE', 'table' );
+	$stars_output_type  = gh_input( 'STARS_OUTPUT_TYPE', 'table' );
+	$stars_output_style = gh_input( 'STARS_OUTPUT_STYLE', '' );
 	$stars_show_count   = gh_input( 'STARS_COUNTS', 7 );
 	$stars_description  = gh_input( 'STARS_DESCRIPTION', '' );
 	$total_stars_count  = ( isset( $repo_info->stargazers_count ) && ! empty( $repo_info->stargazers_count ) ) ? $repo_info->stargazers_count : '';
