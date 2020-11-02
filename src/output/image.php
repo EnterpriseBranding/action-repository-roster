@@ -1,14 +1,22 @@
 <?php
+/**
+ * Possible Options
+ * noimage,noname,square,rounded,italic,imglarge,imgsmall
+ *
+ * @param $type
+ *
+ * @return false|string
+ */
 function image_style( $type ) {
 	$css  = file_get_contents( APP_PATH . 'output/image-default.css' );
-	$type = explode( '-', trim( $type ) );
+	$type = explode( ',', trim( $type ) );
 
 	foreach ( $type as $style ) {
 		switch ( $style ) {
-			case 'noimage':
+			case 'no-image':
 				$css .= '.user-info img {display:none !important;}';
 				break;
-			case 'noname':
+			case 'no-name':
 				$css .= '.user-info sub {display:none !important;}';
 				break;
 			case 'square':
@@ -20,10 +28,10 @@ function image_style( $type ) {
 			case 'italic':
 				$css .= '.user-info sub {font-style:italic;}';
 				break;
-			case 'imglarge':
+			case 'img-large':
 				$css .= '.user-info img {max-width: 100px}';
 				break;
-			case 'imgsmall':
+			case 'img-small':
 				$css .= '.user-info img {max-width: 50px}';
 				break;
 		}
