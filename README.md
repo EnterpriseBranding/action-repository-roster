@@ -156,6 +156,27 @@
         <td align="center">❌</td>
         <td align="center">✔</td>
     </tr>
+    <tr>
+        <td><code>bold</code></td>
+        <td>username text will be rendered in bold text</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+    </tr>
+    <tr>
+        <td><code>italic</code></td>
+        <td>username text will be rendered in italic text</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+    </tr>
+    <tr>
+        <td><code>small</code></td>
+        <td>username text will be rendered in small fontsize text</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+        <td align="center">✔</td>
+    </tr>
 </table>
 
 #### Example Code
