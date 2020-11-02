@@ -11,6 +11,7 @@
 
 ### ↳ Stargazers
 <!-- REPOSITORY_STARS:START -->
+<i>Nobody has starred this repository <b>yet</b>.</i>
 <!-- REPOSITORY_STARS:END -->
 
 ### ↳ Forkers
