@@ -195,7 +195,30 @@ FORK_OUTPUT_STYLE: 'img-small,no-name'
 ## 🚀 Github Action Workflow File
 
 <!-- START [code:yml|raw] .github/workflows/repo-roster.yml -->
-<!-- END [code:yml|raw] .github/workflows/repo-roster.yml -->
+```yml
+name: "🙏 Repository Roster"
+
+on:
+  workflow_dispatch:
+  watch:
+    types:
+      - started
+  fork:
+
+jobs:
+  update_latest_roster:
+    name: "🐔  Update Latest Roster"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "📥  Fetching Repository Contents"
+        uses: actions/checkout@main
+
+      - name: "🐔  Markdown - Repository Roster"
+        uses: "varunsridharan/action-repository-roster@main"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+```<!-- END [code:yml|raw] .github/workflows/repo-roster.yml -->
 
 
 ## 🎉 Live Examples (for this repo)
