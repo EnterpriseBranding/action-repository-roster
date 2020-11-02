@@ -35,7 +35,7 @@
     </tr>
     <tr>
         <td><code>FORK_OUTPUT_STYLE</code></td>
-        <td>Please Refer <a href="#styling">Styling Option</a> Below</td>
+        <td>Please Refer <a href="#paintbrush--styling-options">:paintbrush: Styling Options</a> Below</td>
         <td><code>table</code></td>
     </tr>
     <tr>
@@ -68,7 +68,7 @@
     </tr>
     <tr>
         <td><code>STARS_OUTPUT_STYLE</code></td>
-        <td>Please Refer <a href="#styling">Styling Option</a> Below</td>
+        <td>Please Refer <a href="#paintbrush--styling-options">:paintbrush: Styling Options</a> Below</td>
         <td><code>table</code></td>
     </tr>
     <tr>
@@ -86,6 +86,8 @@
         <td><code>true</code></td>
     </tr>
 </table>
+
+### :paintbrush: Styling Options
 
 ## 🚀 Usage
 
