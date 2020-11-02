@@ -1,10 +1,10 @@
 # Hello World
 
 <!-- REPOSITORY_STARS:START -->
-<table><tbody><tr><td align="center"><a href="https://github.com/kkotha82" rel="nofollow"><img src="https://avatars3.githubusercontent.com/u/15326217?v=4" alt="@kkotha82" style="max-width:100%;" width="75px;"><br/>@kkotha82</a> </td></tr></tbody></table><p align="center"><i><b>1</b> have starred this repository</i></p>
+[![Stargazers repo roster for @varunsridharan/demo-repository-roster](https://raw.githubusercontent.com/varunsridharan/demo-repository-roster/blob/main/.github/common/images/stars-custom.svg)](https://raw.githubusercontent.com/varunsridharan/demo-repository-roster/stargazers)
 <!-- REPOSITORY_STARS:END -->
 
 
 <!-- REPOSITORY_FORKS:START -->
-<table><tbody><tr><td align="center"><a href="https://github.com/kkotha82" rel="nofollow"><img src="https://avatars3.githubusercontent.com/u/15326217?v=4" alt="@kkotha82" style="max-width:100%;" width="75px;"><br/>@kkotha82</a> </td></tr></tbody></table><p align="center"><i><b>1</b> have forked this repository</i></p>
+[![Forkers repo roster for @varunsridharan/demo-repository-roster](https://raw.githubusercontent.com/varunsridharan/demo-repository-roster/blob/main/.github/common/images/forks-custom.svg)](https://raw.githubusercontent.com/varunsridharan/demo-repository-roster/stargazers)
 <!-- REPOSITORY_FORKS:END -->
