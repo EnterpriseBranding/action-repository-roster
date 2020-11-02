@@ -6,6 +6,11 @@ branding:
   color: 'green'
 
 inputs:
+  IMAGE_SAVE_PATH:
+    description: 'Custom Location On Where To Save Images if FORK_OUTPUT_TYPE / STARS_OUTPUT_TYPE used as image'
+    default: '.github/roster/'
+    required: false
+
   FORK:
     description: 'Set True Generate latest Forked users information. or you can also provide the file location on where to save forked users info'
     required: false
@@ -50,6 +55,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.IMAGE_SAVE_PATH }}
     - ${{ inputs.FORK }}
     - ${{ inputs.FORK_OUTPUT_TYPE }}
     - ${{ inputs.FORK_COUNTS }}
