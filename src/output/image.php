@@ -50,15 +50,18 @@ function generate_image( $data, $style, $desc ) {
 <style>$css</style>
 <div class="container">
 HTML;
-
-	foreach ( $data as $info ) {
-		$image = convert_image_to_base64( $info['avatar_url'] );
-		$svg   .= <<<HTML
+	if ( is_array( $data ) ) {
+		foreach ( $data as $info ) {
+			$image = convert_image_to_base64( $info['avatar_url'] );
+			$svg   .= <<<HTML
 <div class="user-info">
 	<img src="{$image}" alt="@{$info['owner']}"/>
 	<sub><b>@{$info['owner']}</b></sub> 
 </div>
 HTML;
+		}
+	} else {
+		$svg .= '<p>' . $data . '</p>';
 	}
 	$svg .= '</div>';
 
