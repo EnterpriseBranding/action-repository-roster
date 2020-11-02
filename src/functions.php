@@ -65,7 +65,7 @@ function generate_output( $data_type, $output_type, $data, $style, $description 
 
 	if ( 'image' === $output_type ) {
 		$content = generate_image( $data, $style, $description );
-		$saveto  = str_replace( '[type]', $data_type, validate_save_path( IMAGE_SAVE_DIR, $data_type . '.svg' ) );
+		$saveto  = validate_save_path( str_replace( '[type]', $data_type, IMAGE_SAVE_DIR ), $data_type . '.svg' );
 		save_file( $saveto, $content );
 		$image_url = github_url( true, $repo, '', $saveto );
 		$repo_url  = github_url( false, $repo, false, false );
