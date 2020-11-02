@@ -64,7 +64,7 @@ function generate_output( $data_type, $output_type, $data, $style, $description 
 		$saveto  = str_replace( '[type]', $data_type, validate_save_path( IMAGE_SAVE_DIR, $data_type . '.svg' ) );
 		save_file( $saveto, $content );
 		$image_url = github_url( true, $repo, '', $saveto );
-		$repo_url  = github_url( true, $repo, false, false );
+		$repo_url  = github_url( false, $repo, false, false );
 		gh_commit( $saveto, '[Repository Roster] Latest Forked Users' );
 		if ( 'stars' === $data_type ) {
 			return "[![Stargazers repo roster for @${repo}](${image_url})](${repo_url}stargazers)";
