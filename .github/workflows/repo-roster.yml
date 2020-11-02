@@ -1,0 +1,36 @@
+name: "🙏 Repository Roster"
+
+env:
+  VS_WORKFLOW_TYPE: "repository-roster"
+
+on:
+  watch:
+    types:
+      - started
+  fork:
+
+jobs:
+  update_latest_roster:
+    name: "🐔  Update Latest Roster"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "📥  Fetching Repository Contents"
+        uses: actions/checkout@main
+
+      - name: "🐔  Markdown - Repository Roster"
+        uses: varunsridharan/action-repository-roster@main
+        with:
+          STARS_OUTPUT_TYPE: 'markdown'
+          FORK_OUTPUT_TYPE: 'markdown'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "🐔  Image - Repository Roster"
+        uses: varunsridharan/action-repository-roster@main
+        with:
+          STARS: 'image.md'
+          FORK: 'image.md'
+          STARS_OUTPUT_TYPE: 'image'
+          FORK_OUTPUT_TYPE: 'image'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
